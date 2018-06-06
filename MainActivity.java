@@ -13,6 +13,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static int randomNumber;
 
+    public void makeToast(String string){
+        Toast.makeText(MainActivity.this, string, Toast.LENGTH_SHORT).show();
+    }
+
     // guess function where all the work will be done
     public void guess(View view){
 
@@ -25,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         // check the conditions based off the user's input
         if(userInputInteger > randomNumber){
-            Toast.makeText(MainActivity.this, "Lower!", Toast.LENGTH_SHORT).show();
+            makeToast("Lower!");
         }
         else if(userInputInteger < randomNumber){
-            Toast.makeText(MainActivity.this, "Higher!", Toast.LENGTH_SHORT).show();
+            makeToast("Higher!");
         }
         else{ // the user's input is equal to the random number
-            Toast.makeText(MainActivity.this, "You got it!!!!", Toast.LENGTH_SHORT).show();
+            makeToast("You got it!!!");
             Random random = new Random();
             randomNumber = random.nextInt(1000) + 1;
         }
@@ -48,6 +52,5 @@ public class MainActivity extends AppCompatActivity {
         randomNumber = min + random.nextInt(max); // number between 1 and 1000
         String randomNumberString = Integer.toString(randomNumber); // converts integer to string to be printed in the logs
         Log.i("Random", randomNumberString);
-
     }
 }
